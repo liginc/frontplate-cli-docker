@@ -9,3 +9,9 @@ RUN apt-get clean
 
 RUN npm install --global npm@4
 RUN npm install --global frontplate-cli@4
+
+VOLUME /workspace
+WORKDIR /workspace
+
+COPY install-and-build.sh /usr/bin
+CMD install-and-build.sh

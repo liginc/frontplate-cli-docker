@@ -1,15 +1,9 @@
-FROM ubuntu:bionic
+FROM node:8-alpine
 MAINTAINER LIG inc.
 
-RUN apt-get update
-RUN apt-get install -y curl gpg
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get install -y nodejs
-RUN apt-get clean
-
-RUN npm install --global npm@4
-RUN npm install --global frontplate-cli@4
-RUN npm cache clean --force
+RUN npm install --global npm@4 && \
+    npm install --global frontplate-cli@4 && \
+    npm cache clean --force
 
 VOLUME /workspace
 WORKDIR /workspace

@@ -24,17 +24,17 @@ fi
 
 for FILENAME in package.json frp.config.js; do
     if [ ! -f $FILENAME ]; then
-        echo "\n${RED}${BOLD}ERROR: ${FILENAME} not found at $(pwd)${NORMAL}"
-        echo "Have you mounted the project folder to the proper working directory in the container?\n"
+        echo "${RED}${BOLD}ERROR:${NORMAL} ${RED}${FILENAME} not found at $(pwd)${NORMAL}"
+        echo "Have you mounted the project folder to the proper working directory in the container?"
         exit 1
     fi
 done
 
-echo "\n${CYAN}${BOLD}Installing dependencies from NPM...${NORMAL}\n"
+echo "${CYAN}Installing dependencies from NPM...${NORMAL}"
 npm install
 
-echo "\n${CYAN}${BOLD}Building frontend resources in production mode...${NORMAL}\n"
+echo "${CYAN}Building frontend resources in production mode...${NORMAL}"
 frp build --production
 
-echo "\n${CYAN}${BOLD}Build completed${NORMAL}\n"
+echo "${CYAN}${BOLD}Build completed${NORMAL}"
 exit 0

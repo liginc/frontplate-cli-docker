@@ -31,10 +31,18 @@ for FILENAME in package.json frp.config.js; do
 done
 
 echo "${CYAN}Installing dependencies from NPM...${NORMAL}"
-npm install
+
+if ! npm install; then
+  echo "${RED}${BOLD}ERROR:${NORMAL}${RED} NPM install failed${NORMAL}"
+  exit 1
+fi
 
 echo "${CYAN}Building frontend resources in production mode...${NORMAL}"
-frp build --production
+
+if ! frp build --production; then
+  echo "${RED}${BOLD}ERROR:${NORMAL}${RED} Build failed${NORMAL}"
+  exit 1
+fi
 
 echo "${CYAN}${BOLD}Build completed${NORMAL}"
 exit 0

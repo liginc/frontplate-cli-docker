@@ -10,11 +10,11 @@ Run this image using Docker on your local machine. Then it [triggers `npm instal
 ```sh
 docker run \
     -it --rm \
-    -v ./path/to/local/workspace:/workspace:rw \
+    -v $(pwd):/workspace:rw \
     liginccojp/frontplate-cli-docker:node8-npm4-frp4
 ```
 
-:warning: Note that you need to change the dummy path (`./path/to/local/workspace`) of the volume link option (`-v`) to the proper local path where the source code set is located.
+:warning: Note that you may need to change the local workspace path (`$(pwd)` part in the volume link option `-v`) to the proper path to where the source code set is located, if you are trying to perform this command outside of the workspace.
 
 ### Advanced: Running custom command
 
@@ -23,7 +23,7 @@ You can also control which command to run on the container instead of the defaul
 ```sh
 docker run \
     -it --rm \
-    -v ./path/to/local/workspace:/workspace:rw \
+    -v $(pwd):/workspace:rw \
     liginccojp/frontplate-cli-docker:node8-npm4-frp4 \
     frp build -p -c another.frp.config.json
 ```
